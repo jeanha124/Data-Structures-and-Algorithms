@@ -17,6 +17,10 @@
 // lucasNumber(5)   // => 11
 // lucasNumber(9)   // => 76
 function lucasNumber(n) {
+    let arr = [2, 1];
+    if (n === 0) return arr[0];
+    if (n === 1) return arr[1];
+    return lucasNumber(n - 1) + lucasNumber(n - 2);
 
 }
 
