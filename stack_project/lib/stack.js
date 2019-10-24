@@ -21,11 +21,44 @@
 // -----------
 
 class Node {
-
+  constructor(val) {
+    this.value = val;
+    this.next = null;
+  } 
 }
 
 class Stack {
-
+  constructor() {
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+  push(val) {
+    const newNode = new Node(val);
+    if (!this.top) {
+      this.top = newNode;
+      this.bottom = newNode;
+    } else {
+      let curr = this.top;
+      this.top = newNode;
+      this.top.next = curr; 
+    }
+    this.length++;
+    return this.size();
+  }
+  pop() {
+    if (!this.top) return null;
+    let curr = this.top;
+    if (this.top === this.bottom) {
+      this.bottom = null;
+    }
+    this.top = this.top.next;
+    this.length--;
+    return curr.value;
+  }
+  size() {
+    return this.length;
+  }
 }
 
 exports.Node = Node;
